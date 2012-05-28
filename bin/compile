@@ -21,6 +21,28 @@ function indent {
   esac
 }
 
+function download_jdk7_and_set_java_home {
+    cd $BUILD_DIR
+    if [ -d "$CACHE_DIR/.jdk7" ]; then
+	echo -n "copying jdk to app"
+	cp -r "$CACHE_DIR/.jdk7" $BUILD_DIR
+	echo "done"
+    fi
+
+    JDK7_URL="https://s3.amazonaws.com/bradleybuda-heroku-buildpack/jdk-7u4-linux-x64.tar.gz"
+
+    if [ ! -d "$BUILD_DIR/.jdk7" ]; then
+	echo -n "-----> Installing Oracle JDK7u4 build (to .jdk7)....."
+	mkdir "$BUILD_DIR/.jdk7"
+	cd "$BUILD_DIR/.jdk7"
+	curl --silent --max-time 180 --location $JDK7_URL | tar xz
+	echo " done"
+    fi
+
+    export JAVA_HOME="$BUILD_DIR/.jdk7/jdk1.7.0_04"
+    echo "-----> Installed to $JAVA_HOME"
+}
+
 function download_jruby_and_install_default_gems {
   if [ ! -d "$CACHE_DIR/jruby-$VERSION" ]; then
     echo "-----> Downloading and unpacking JRuby"
@@ -96,6 +118,7 @@ function install_rails3_server_static_assets {
 JRUBY_OPTS="--1.9 -J-Xmx400m"
 VERSION="1.7.0.preview1"
 
+download_jdk7_and_set_java_home
 download_jruby_and_install_default_gems
 copy_jruby_to_build
 bundle_install_with_cache
