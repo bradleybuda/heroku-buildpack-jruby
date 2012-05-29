@@ -5,8 +5,8 @@ cat << EOF
 addons:
   - shared-database:5mb
 config_vars:
-  PATH: .jdk7/jdk1.7.0_04/bin:bin:jruby/bin:/usr/bin:/bin
-  JAVA_HOME: .jdk7/jdk1.7.0_04
+  PATH: /app/.jdk7/jdk1.7.0_04/bin:bin:jruby/bin:/usr/bin:/bin
+  JAVA_HOME: /app/.jdk7/jdk1.7.0_04
   RACK_ENV: production
   RAILS_ENV: production
   JRUBY_OPTS: --1.9 -J-Xmx380m
