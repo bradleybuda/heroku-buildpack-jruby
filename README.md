@@ -1,4 +1,6 @@
-# Heroku buildpack for JRuby
+# Heroku buildpack for JRuby + JDK7 + Rails
+
+*NOTE*: This doesn't really work right now. Try [the JRuby official buildpack](https://github.com/jruby/heroku-buildpack-jruby/) instead.
 
 A buildpack to fast and easy use JRuby on Heroku. Just create a Heroku app like this:
 
@@ -8,7 +10,7 @@ It will download and unpack JRuby from [jruby.org](http://jruby.org/), install [
 
 Example ```Procfile```:
 
-    web: bin/trinidad -t -r -p $PORT -e $RACK_ENV
+    web: bin/mizuno -p $PORT -E $RACK_ENV
 
 Note: You do normally not want to use ```bundle exec``` with JRuby. Use the binstubs (in ```bin/```) instead, and put ```require 'bundler/setup'``` before any other ```require```.
 
@@ -33,10 +35,11 @@ This buildpack comes with the Oracle JDK7u4 release. To keep the slug size down,
 
 ## Servers
 
-Recommended web servers are:
+The only successfully-tested web server is [Mizuno](https://github.com/matadon/mizuno).
+
+Other possible JRuby servers are:
 
 * [Trinidad](https://github.com/trinidad/trinidad) - A wrapper around [Tomcat](http://tomcat.apache.org/)
-* [Mizuno](https://github.com/matadon/mizuno) - A wrapper around [Jetty](http://jetty.codehaus.org/jetty/)
 * [Puma](http://puma.io) - A server written in Ruby, wraps the Ragel parser (from Mongrel)
 
 A comparison can be found here: [carlhoerberg.github.com/blog/2012/03/31/jruby-application-server-benchmarks/](http://carlhoerberg.github.com/blog/2012/03/31/jruby-application-server-benchmarks/)
