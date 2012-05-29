@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# NB - this is run once on first deploy, not updated on subsequent deploys
+
 cat << EOF
 ---
 addons:
