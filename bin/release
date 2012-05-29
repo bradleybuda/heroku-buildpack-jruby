@@ -11,6 +11,6 @@ config_vars:
   JAVA_HOME: /app/.jdk7/jdk1.7.0_04
   RACK_ENV: production
   RAILS_ENV: production
-  JRUBY_OPTS: --1.9 -J-Xmx380m
+  JRUBY_OPTS: --server --1.9 -J-Xmx380m
 default_process_types:
 EOF
