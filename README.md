@@ -14,9 +14,22 @@ Note: You do normally not want to use ```bundle exec``` with JRuby. Use the bins
 
 Current JRuby version: 1.7.0.preview1
 
+The samples, docs, and native libraries were removed from JRuby to reduce slug size.
+
 For now only supports 1.9 mode, open an issue if you need 1.8 mode.
 
 Example application: [github.com/carlhoerberg/heroku-jruby-example](https://github.com/carlhoerberg/heroku-jruby-example)
+
+## JDK 7
+
+This buildpack comes with the Oracle JDK7u4 release. To keep the slug size down, the JDK distribution has been modified to remove several files:
+
+* db/ - The Derby DB
+* src.zip
+* lib/visualvm
+* man/
+* include/
+* jre/lib/fonts/
 
 ## Servers
 

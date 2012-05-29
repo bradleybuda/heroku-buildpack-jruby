@@ -29,7 +29,7 @@ function download_jdk7_and_set_java_home {
 	echo "done"
     fi
 
-    JDK7_URL="https://s3.amazonaws.com/bradleybuda-heroku-buildpack/jdk-7u4-linux-x64.tar.gz"
+    JDK7_URL=https://s3.amazonaws.com/bradleybuda-heroku-buildpack/jdk-7u4-linux-x64.tar.gz
 
     if [ ! -d "$BUILD_DIR/.jdk7" ]; then
 	echo -n "-----> Installing Oracle JDK7u4 build (to .jdk7)....."
@@ -47,7 +47,7 @@ function download_jruby_and_install_default_gems {
   if [ ! -d "$CACHE_DIR/jruby-$VERSION" ]; then
     echo "-----> Downloading and unpacking JRuby"
     mkdir -p $CACHE_DIR
-    JRUBY_TAR=http://jruby.org.s3.amazonaws.com/downloads/$VERSION/jruby-bin-$VERSION.tar.gz
+    JRUBY_TAR=https://s3.amazonaws.com/bradleybuda-heroku-buildpack/jruby-bin-$VERSION.tar.gz
     curl $JRUBY_TAR -s -o - | tar xzf - -C $CACHE_DIR/
     PATH=$CACHE_DIR/jruby-$VERSION/bin:$PATH
 
